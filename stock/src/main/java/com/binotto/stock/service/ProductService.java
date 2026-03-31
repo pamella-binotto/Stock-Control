@@ -1,7 +1,7 @@
 package com.binotto.stock.service;
 
 import com.binotto.stock.model.Product;
-import com.binotto.stock.repository.Repository;
+import com.binotto.stock.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class ProductService {
 
     @Autowired
-    private Repository productRepository;
+    private ProductRepository productRepository;
 
     public Product save (Product p) {
         return productRepository.save(p);
