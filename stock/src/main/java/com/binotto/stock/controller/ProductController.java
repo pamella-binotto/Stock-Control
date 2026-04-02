@@ -13,22 +13,26 @@ import java.util.List;
 
 public class ProductController {
 
-    @Autowired
-    private ProductService productService;
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping
     public List<Product> listProducts() {
-        return productService.listAll();
-    }
+        return productService.findAll();
     }
 
-@PostMapping
-public Product createProduct(@RequestBody Product product) {
-    return productService.save(product);
-}
+
+    @PostMapping
+    public Product createProduct(@RequestBody Product product) {
+        return productService.save(product);
+    }
 
     @GetMapping("/{id}")
-    public String findById (@PathVariable long id){
+    public String findById(@PathVariable long id) {
         return "Buscando por ID: " + id;
     }
+
 }
