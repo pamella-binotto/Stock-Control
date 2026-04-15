@@ -1,11 +1,9 @@
 package com.binotto.stock.service;
 
+import com.binotto.stock.exception.ResourceNotFoundException;
 import com.binotto.stock.model.Product;
 import com.binotto.stock.repository.ProductRepository;
 import org.springframework.stereotype.Service;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -32,8 +30,7 @@ public class ProductService {
 
     public Product findById (long id){
         return productRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        "Product not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Product not found"));
 
     }
 
