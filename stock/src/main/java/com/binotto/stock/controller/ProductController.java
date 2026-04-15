@@ -3,6 +3,7 @@ package com.binotto.stock.controller;
 
 import com.binotto.stock.model.Product;
 import com.binotto.stock.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class ProductController {
 
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@Valid @RequestBody Product product) {
         return productService.save(product);
     }
 
@@ -36,7 +37,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-        public Product updateProduct(@PathVariable Long id, @RequestBody Product p){
+        public Product updateProduct(@PathVariable Long id, @Valid @RequestBody Product p){
             return productService.update(id,p);
     }
 

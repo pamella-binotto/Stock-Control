@@ -4,6 +4,12 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -12,9 +18,22 @@ public class Product {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank (message = "The name is required.")
+    @Column(nullable = false)
     private String name;
-    private int quantity;
+
+    @NotNull(message = "The quantity is required")
+    @PositiveOrZero(message = "The quantity cannot be negative.")
+    @Column(nullable = false)
+    private Integer quantity;
+
+    @NotNull(message = "The price is required")
+    @DecimalMin(value = "0.01", message = "The price must be greater than zero.")
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
+
+    @NotBlank (message = "The category is required.")
+    @Column(nullable = false)
     private String category;
 
 
@@ -34,11 +53,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
