@@ -1,4 +1,4 @@
-﻿package com.binotto.stock.exception;
+package com.binotto.stock.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
 
