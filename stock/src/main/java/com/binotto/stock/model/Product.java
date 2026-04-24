@@ -1,39 +1,43 @@
 package com.binotto.stock.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.*;
 
 
 @Entity
 @Table(name = "products")
+@Schema(description = "Represents a product in stock.")
 public class Product {
 
     @Id
+    @Schema(description = "Product ID.", example = "1", accessMode =  Schema.AccessMode.READ_ONLY )
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank (message = "The name is required.")
     @Column(nullable = false)
+    @Schema(description = "Product name", example = "Xiaomi Redmi Note 15")
     private String name;
 
     @NotNull(message = "The quantity is required")
-    @PositiveOrZero(message = "The quantity cannot be negative.")
+    @Min(value = 1, message = "The quantity must be greater than zero")
     @Column(nullable = false)
+    @Schema(description = "Quantity in stock", example = "10")
     private Integer quantity;
 
     @NotNull(message = "The price is required")
     @DecimalMin(value = "0.01", message = "The price must be greater than zero.")
     @Column(nullable = false, precision = 10, scale = 2)
+    @Schema(description = "Unit price.", example = "1400.00")
     private BigDecimal price;
 
     @NotBlank (message = "The category is required.")
     @Column(nullable = false)
+    @Schema(description = "Product category", example = "Smartphone")
     private String category;
 
 

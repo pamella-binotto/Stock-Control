@@ -4,6 +4,9 @@ package com.binotto.stock.controller;
 import com.binotto.stock.model.Product;
 import com.binotto.stock.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
@@ -40,10 +43,26 @@ public class ProductController {
             @ApiResponse (responseCode = "201", description = "Creates a new product in the stock with the provided data"),
             @ApiResponse (responseCode = "400", description = "Invalid input data")
     })
-
-
     @PostMapping
-    public Product createProduct(@Valid @RequestBody Product product) {
+    @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "Product to be created",
+            required = true,
+            content = @Content(
+                    mediaType = "application/json",
+                    examples = @ExampleObject(
+                            name = "Product Example",
+                            value = """
+                                    {
+                                    "name": "Xiaomi Note 15",
+                                    "quantity": 10,
+                                    "price": 1400.00,
+                                    "category": "Smartphone"
+                                    }
+                                    """
+                    )
+            )
+    )
+    public Product createProduct(@Valid @org.springframework.web.bind.annotation.RequestBody Product product) {
         return productService.save(product);
     }
 
