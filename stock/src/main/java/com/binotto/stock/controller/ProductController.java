@@ -4,8 +4,7 @@ package com.binotto.stock.controller;
 import com.binotto.stock.model.Product;
 import com.binotto.stock.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import io.swagger.v3.oas.annotations.media.Content;;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -86,7 +85,7 @@ public class ProductController {
                 @ApiResponse (responseCode = "404", description = "Product not found")
         })
     @PutMapping("/{id}")
-        public Product updateProduct(@PathVariable Long id, @Valid @RequestBody Product p){
+        public Product updateProduct(@PathVariable Long id, @Valid @org.springframework.web.bind.annotation.RequestBody Product p){
             return productService.update(id,p);
     }
 
