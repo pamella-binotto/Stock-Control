@@ -3,3 +3,6 @@ spring:
     url: jdbc:postgresql://localhost:5432/stock
     username: YOUR_USER
     password: YOUR_PASSWORD
+
+server:
+  port: ${PORT:8080}
