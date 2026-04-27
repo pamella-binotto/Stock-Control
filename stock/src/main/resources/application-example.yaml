@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/stock
+    url: ${DATABASE_URL}git add .
     username: YOUR_USER
     password: YOUR_PASSWORD
 

@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: stock-control
+    runtime: java
+    rootDir: stock/stock
+    buildCommand: chmod +x mvnw && ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jargit add render.yaml
