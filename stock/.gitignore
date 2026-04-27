@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### YAML ##
-application.yaml
+application.yml
