@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DATABASE_URL}git add .
+    url: ${DATABASE_URL}
     username: YOUR_USER
     password: YOUR_PASSWORD
 
