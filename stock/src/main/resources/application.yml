@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: stock
+
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+       ddl-auto: update
+    show-sql: true
+
+server:
+  port: ${PORT:8080}
