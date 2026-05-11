@@ -165,6 +165,13 @@ A interface frontend deste sistema foi desenvolvida em **React** e consome esta 
 
 ➡️ **[Stock Control Frontend](https://github.com/pamella-binotto/Stock-Control-Frontend)**
 
+
+## 🚀 Deploy
+
+A API está disponível em produção:
+➡️ [Stock Control Back-end](https://stock-control-dgm5.onrender.com)
+
+> ⚠️ Por utilizar o plano gratuito do Render, a aplicação pode levar até 50 segundos para responder após um período de inatividade.
 ---
 
 

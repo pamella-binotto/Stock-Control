@@ -11,7 +11,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+
+
 
 @RestController
 @RequestMapping("/products")
@@ -32,6 +35,8 @@ public class ProductController {
             @ApiResponse (responseCode =  "200", description = "Products retrieved successfully"),
             @ApiResponse (responseCode = "500",description = "Internal server error")
     })
+
+
     @GetMapping
     public List<Product> listProducts() {
         return productService.findAll();
